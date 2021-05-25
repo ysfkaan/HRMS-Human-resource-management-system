@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobTitleService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobTitlesDao;
 
 import kodlamaio.hrms.entities.concretes.JobTitles;
@@ -15,19 +19,28 @@ public class JobTitleManager implements JobTitleService {
 	
 	@Autowired
 	private JobTitlesDao jobtitlesdao;
-	
-	public JobTitleManager() {
-		
+
+	public JobTitleManager(JobTitlesDao jobtitlesdao) {
+		super();
+		this.jobtitlesdao = jobtitlesdao;
 	}
-
-
-
 
 
 	@Override
-	public List<JobTitles> getAll() {
+	public DataResult  getAll() {
 		
-		return this.jobtitlesdao.findAll();
+		return new SuccessDataResult<List<JobTitles>>(this.jobtitlesdao.findAll());
+				
 	}
+	
+	
+	
+	public Result add(JobTitles jobtitle) {
+		
+		this.jobtitlesdao.save(jobtitle);
+		return new SuccessResult();
+		
+	}
+
 
 }
