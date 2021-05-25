@@ -1,20 +1,21 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.util.List;  
+import java.util.List;   
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import kodlamaio.hrms.business.abstracts.IEmployerService;
-import kodlamaio.hrms.core.utilities.Auth.abstarcts.EmailVerificationService;
+
+import kodlamaio.hrms.core.utilities.registerRule.abstarcts.EmployerRuleService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
-import kodlamaio.hrms.entities.concretes.Candidate;
+
 import kodlamaio.hrms.entities.concretes.Employer;
 
 
@@ -22,23 +23,15 @@ import kodlamaio.hrms.entities.concretes.Employer;
 public class EmployerManager implements IEmployerService{
 
 	
-
-
-
-
 	@Autowired
 	private EmployerDao employerdao;
-	private EmailVerificationService emailverification;
-
-
-
-	public EmployerManager(EmployerDao employer, EmailVerificationService emailverification) {
+	private EmployerRuleService employerRule;
+	
+	public EmployerManager(EmployerDao employerdao, EmployerRuleService employerRule) {
 		super();
 		this.employerdao = employerdao;
-		this.emailverification=emailverification;
+		this.employerRule = employerRule;
 	}
-
-
 
 	@Override
 	public DataResult <List<Employer>>  getAll() {
@@ -48,21 +41,39 @@ public class EmployerManager implements IEmployerService{
 
 
 
+	
+	
+	
 	@Override
 	public Result addEmployer(Employer employer) {
-		if(isNotNull(employer)) {
-			return new ErrorResult("Eksik bilgi olmamalıdır ");
-			
-		}else if (employerdao.existsEmployerByEmail(employer.getEmail())) {
-			return new ErrorResult("Girdiğiniz email sisteme kayıtlıdır");
-			
-		}else if(this.CheckMail(employer)) {
-			return new ErrorResult("Mail doğrulaması gerçekleşmedi");
-			
-		}else {
 		
-			this.employerdao.save(employer);
-		return new SuccessResult("Kayıt tamamlandı");
+		if(!this.employerRule.checkMail(employer)) {
+				return new ErrorResult("Hatalı Mail ");
+		
+				
+		}else if (!this.employerRule.checkPassword(employer)) {
+				return new ErrorResult("Hatalı şifre");
+			
+				
+		}else if(!this.employerRule.checkWebsite(employer)) {
+				return new ErrorResult("Hatalı web sitesi");
+				
+			
+		}else if (!this.employerRule.checkCompanyName(employer)){
+				return new ErrorResult("Hatalı şirket ismi");
+		
+		
+		}else if (!this.employerRule.verificationMail(employer)){
+			return new ErrorResult("Mailiniz doğrulanamadı");
+		
+			
+		}else if(this.employerdao.findAllByEmail(employer.getEmail()).stream().count() != 0 ) {
+			return new ErrorResult("Email Zaten Kayıtlı");
+
+			
+			
+		}this.employerdao.save(employer);
+		return new SuccessResult("iş veren Kaydı tamamlandı");
 		}
 		
 		
@@ -72,21 +83,4 @@ public class EmployerManager implements IEmployerService{
 	}
 	
 	
-	public boolean  isNotNull(Employer employer) {
-		if( employer.getEmail().isEmpty()||
-			employer.getPassword().isBlank() ||
-			employer.getCompanyName().isEmpty() ||
-			employer.getWebAddress().isEmpty()){
-				return true;
-		}else {
-			    return false;
-		}
-		
 	
-	}
-	public boolean CheckMail(Employer employer) {
-		return this.emailverification.CheckMail(employer);
-		 
-	}
-
-}

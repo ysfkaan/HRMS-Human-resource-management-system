@@ -38,7 +38,7 @@ public class JobTitleManager implements JobTitleService {
 	public Result add(JobTitles jobtitle) {
 		
 		this.jobtitlesdao.save(jobtitle);
-		return new SuccessResult();
+		return new SuccessResult("iş pozisyonu eklendi");
 		
 	}
 
