@@ -1,10 +1,11 @@
 package kodlamaio.hrms.entities.concretes;
-import javax.persistence.Column; 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,26 +13,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@Entity
 @Data
-@Table(name="job_titles")
+@Entity
+@Table(name="employee_confirms")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class JobTitles {
+public class EmployeeConfirm {
 	
-	
-	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private int Id;
 	
-	@Column(name="title")
-	private String title;
-
+	
+	@Column(name="employee_id")
+	private int employeeId;
 
 	
+	@Column(name="is_confirmed")
+	private boolean isConfirmed;
 
 }

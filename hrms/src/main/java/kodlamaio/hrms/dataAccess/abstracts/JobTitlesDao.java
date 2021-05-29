@@ -3,8 +3,8 @@ package kodlamaio.hrms.dataAccess.abstracts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kodlamaio.hrms.entities.concretes.JobTitles;
+import kodlamaio.hrms.entities.concretes.JobTitle;
 
-public interface JobTitlesDao extends JpaRepository<JobTitles,Integer> {
+public interface JobTitlesDao extends JpaRepository<JobTitle,Integer> {
 
 }

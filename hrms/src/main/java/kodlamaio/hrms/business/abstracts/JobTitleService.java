@@ -5,16 +5,16 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobTitles;
+import kodlamaio.hrms.entities.concretes.JobTitle;
 
 
 
 @Service
 public interface JobTitleService {
 	
-	DataResult<List<JobTitles>>  getAll(); 
+	DataResult<List<JobTitle>>  getAll(); 
 	
-	Result add(JobTitles jobtitle);
+	Result add(JobTitle jobtitle);
 	
 
 }
