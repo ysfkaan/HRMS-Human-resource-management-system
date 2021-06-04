@@ -6,8 +6,8 @@ package kodlamaio.hrms.core.utilities.Auth.concretes;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.core.utilities.Auth.abstarcts.EmailVerificationService;
-import kodlamaio.hrms.entities.concretes.Candidate;
-import kodlamaio.hrms.entities.concretes.Employer;
+import kodlamaio.hrms.entities.concretes.main.Candidate;
+import kodlamaio.hrms.entities.concretes.main.Employer;
 
 
 @Service

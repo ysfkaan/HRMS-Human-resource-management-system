@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import kodlamaio.hrms.Adapters.abstarcts.FakeMernisAdapterService;
 import kodlamaio.hrms.core.utilities.Auth.abstarcts.EmailVerificationService;
 import kodlamaio.hrms.core.utilities.registerRule.abstarcts.CandidateRuleService;
-import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.main.Candidate;
 
 
 

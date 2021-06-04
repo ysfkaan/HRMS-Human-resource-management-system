@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import kodlamaio.hrms.entities.concretes.JobPost;
+import kodlamaio.hrms.entities.concretes.post.JobPost;
 
 public interface JobPostDao extends JpaRepository<JobPost, Integer>{
 	

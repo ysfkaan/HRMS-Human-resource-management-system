@@ -1,6 +1,6 @@
 package kodlamaio.hrms.core.utilities.registerRule.abstarcts;
 
-import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.main.Candidate;
 
 public interface CandidateRuleService {
 	boolean result(Candidate candidate) ;

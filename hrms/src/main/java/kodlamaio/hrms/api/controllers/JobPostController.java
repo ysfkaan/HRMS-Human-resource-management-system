@@ -14,7 +14,7 @@ import org.springframework.web.context.annotation.RequestScope;
 import kodlamaio.hrms.business.abstracts.JobPostService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPost;
+import kodlamaio.hrms.entities.concretes.post.JobPost;
 import lombok.RequiredArgsConstructor;
 
 

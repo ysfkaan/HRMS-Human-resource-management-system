@@ -1,7 +1,7 @@
 package kodlamaio.hrms.core.utilities.Auth.abstarcts;
 
-import kodlamaio.hrms.entities.concretes.Candidate;
-import kodlamaio.hrms.entities.concretes.Employer;
+import kodlamaio.hrms.entities.concretes.main.Candidate;
+import kodlamaio.hrms.entities.concretes.main.Employer;
 
 
 public interface EmailVerificationService {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.main.Candidate;
 
 @Service
 public interface ICandidateService {

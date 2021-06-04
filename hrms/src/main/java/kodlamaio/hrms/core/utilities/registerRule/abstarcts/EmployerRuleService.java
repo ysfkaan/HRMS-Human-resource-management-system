@@ -1,6 +1,6 @@
 package kodlamaio.hrms.core.utilities.registerRule.abstarcts;
 
-import kodlamaio.hrms.entities.concretes.Employer;
+import kodlamaio.hrms.entities.concretes.main.Employer;
 
 public interface EmployerRuleService {
 	boolean result (Employer employer);

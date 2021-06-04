@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kodlamaio.hrms.entities.concretes.Candidate;
-import kodlamaio.hrms.entities.concretes.Employer;
+import kodlamaio.hrms.entities.concretes.main.Candidate;
+import kodlamaio.hrms.entities.concretes.main.Employer;
 
 public interface EmployerDao extends JpaRepository<Employer ,Integer>{
 	

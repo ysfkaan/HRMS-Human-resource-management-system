@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPost;
+import kodlamaio.hrms.entities.concretes.post.JobPost;
 
 @Service
 public interface JobPostService {
